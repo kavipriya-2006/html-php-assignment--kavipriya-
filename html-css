@@ -20,4 +20,29 @@ Q3. <html>
   <footer>&copy; 2025 My Name</footer>
 </body>
 </html>
+Q6. <form method="get" action="nextpage.php">
+  <input type="text" name="name">
+  <input type="submit">
+</form>
+   <form method="post" action="nextpage.php">
+  <input type="text" name="name">
+  <input type="submit">
+</form>
+   $name = $_POST['name']; // or $_GET['name'] depending on method
+echo "Hello, $name!";
+Q7. <!-- form.html -->
+<form method="post" action="greet.php">
+  Enter your name: <input type="text" name="username">
+  <input type="submit" value="Submit">
+</form>
+  <!-- greet.php -->
+<?php
+if ($_POST['username'] == "") {
+    echo "Error: Name cannot be empty.";
+} else {
+    $name = $_POST['username'];
+    echo "Hello, Welcome to Everyone!<br>";
+    echo "Have a nice day!!";
+}
+?>
 
