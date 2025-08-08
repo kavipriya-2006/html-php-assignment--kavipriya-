@@ -1,1 +1,23 @@
+Q3. <html>
+<head>
+  <title>My Portfolio</title>
+  <style>
+    header, nav, footer { background: #ddd; padding: 10px; }
+    main { padding: 10px; }
+  </style>
+</head>
+<body>
+  <header><h1>My Portfolio</h1></header>
+  <nav>
+    <a href="#">Home</a> |
+    <a href="#">Projects</a> |
+    <a href="#">Contact</a>
+  </nav>
+  <main>
+    <h2>My Projects</h2>
+    <p>Project details here...</p>
+  </main>
+  <footer>&copy; 2025 My Name</footer>
+</body>
+</html>
 
