@@ -28,7 +28,6 @@ OUTPUT:
 Q4. $animal = "antelope";
 $animal_heads = 1;
 $animal_legs = 4;
-
 echo "The $animal has $animal_heads head(s).";
 echo "The $animal has $animal_legs leg(s).";
 OUTPUT:
@@ -55,4 +54,28 @@ OUTPUT:
 Subtotal: 340
 Tax (10%): 34
 Total: 374
+Q8. <?php
+function deal($cost, $size) {
+    return $cost / $size;
+}
+
+$a_cost = deal(25, 11);
+$b_cost = deal(23, 9);
+
+if ($a_cost < $b_cost) {
+    echo "Choose Drink A to save money.";
+} else {
+    echo "Choose Drink B to save money.";
+}
+?>
+OUTPUT:
+Choose Drink A to save money.
+Q9. <?php
+$this = "this";
+$that = "that";
+$the_other = 2.2000000000;
+print("$this,$not_set,$that,$the_other");
+?>
+OUTPUT:
+this,,that,2.2
 
