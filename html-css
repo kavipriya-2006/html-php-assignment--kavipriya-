@@ -45,4 +45,181 @@ if ($_POST['username'] == "") {
     echo "Have a nice day!!";
 }
 ?>
+14)
+<?php if ($_SERVER["REQUEST_METHOD"]=="POST" && 
+($n=trim($_POST["name"])) && filter_var($_POST["email"], 
+FILTER_VALIDATE_EMAIL) && ($m=trim($_POST["message"]))) : ?>
+
+<h3> Thank you , <?=htmlspecialchars($n) ?> ! </h3>
+<p> your message has been received . We will contact you 
+at : <strong><?=htmlspecialchars($e) ?></strong></p>
+
+<?php else: ?>
+<form method = 'post'>
+<input name = "name" placeholder = "Name" required ><br>
+<input type = "email" name = "email" placeholder = "Email" 
+required ><br>
+<textarea name = "message" placeholder = "message" ></textarea><br>
+<button> Add </button>
+</form>
+<?php endif; ?>
+
+OUTPUT:
+Thank you , !
+your message has been received . We will contact you at :
+
+Name
+
+Email
+
+message
+
+Add
+
+16)
+<?php
+function addNumbers($a, $b) {
+    return $a + $b;
+}
+$res = ($_SERVER["REQUEST_METHOD"] == "POST") ? 
+    "The sum is: " . addNumbers($_POST['num1'], $_POST['num2']) : "";
+?>
+
+<!DOCTYPE HTML>
+<html>
+<body>
+
+<form method="post">
+    <input type="number" name="num1" step="any" placeholder="Number 1" required>
+    <input type="number" name="num2" step="any" placeholder="Number 2" required>
+    <button>Add</button>
+</form>
+
+<?php 
+if ($res) echo "<h3>$res</h3>"; 
+?>
+
+</body>
+</html>
+OUTPUT:
+Number 1: 24
+Number 2: 2
+Add
+
+20)
+<?php
+$name = $email = $message = "";
+$errors = [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) $errors['name'] = "Name required";
+    else $name = htmlspecialchars(trim($_POST["name"]));
+
+    if (empty($_POST["email"])) $errors['email'] = "Email required";
+    elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) $errors['email'] = "Invalid email";
+    else $email = htmlspecialchars(trim($_POST["email"]));
+
+    if (empty($_POST["message"])) $errors['message'] = "Message required";
+    else $message = htmlspecialchars(trim($_POST["message"]));
+
+    if (empty($errors)) {
+        echo "<h3>Thank you, $name!</h3><p>We will contact you at <b>$email</b>.</p>";
+        exit;
+    }
+}
+?>
+
+<form method="post">
+    Name:<br><input type="text" name="name" value="<?= $name ?>"><br><?= $errors['name'] ?? '' ?><br>
+    Email:<br><input type="text" name="email" value="<?= $email ?>"><br><?= $errors['email'] ?? '' ?><br>
+    Message:<br><textarea name="message"><?= $message ?></textarea><br><?= $errors['message'] ?? '' ?><br>
+    <button type="submit">Send</button>
+</form>
+
+OUTPUT:
+Thank you, $name!
+We will contact you at $email.
+
+"; exit; } } ?>
+Name:
+<?= $name ?>
+
+
+Email:
+<?= $email ?>
+
+
+Message:
+<?= $message ?>
+
+
+Send
+23)
+<?php
+// Prioritize POST, else GET
+$name = $_POST['name'] ?? $_GET['name'] ?? 'Guest';
+?>
+
+<form method="get" action="">
+    <input type="text" name="name" placeholder="GET name">
+    <button type="submit">Send GET</button>
+</form>
+
+<form method="post" action="">
+    <input type="text" name="name" placeholder="POST name">
+    <button type="submit">Send POST</button>
+</form>
+
+<p>Hello, <?php echo htmlspecialchars($name); ?>!</p>
+
+OUTPUT:
+
+GET name    Send GET
+POST name   Send POST
+Hello, !
+
+26)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Board</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            width: 60px;
+            height: 60px;
+        }
+        .white {
+            background-color: #f0d9b5;
+        }
+        .black {
+            background-color: #b58863;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Chess Board</h2>
+
+<table border="1">
+    <?php
+    for ($row = 1; $row <= 8; $row++) {
+        echo "<tr>";
+        for ($col = 1; $col <= 8; $col++) {
+            // Alternating colors
+            if (($row + $col) % 2 == 0) {
+                echo "<td class='white'></td>";
+            } else {
+                echo "<td class='black'></td>";
+            }
+        }
+        echo "</tr>";
+    }
+    ?>
+</table>
+
+</body>
+</html>
 
